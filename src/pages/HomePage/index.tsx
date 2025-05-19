@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import ProductList from "../../components/ProductList";
 import styles from "./HomePage.module.css";
 import { useProduct } from "../../context/ProductContext";
+import { getProducts } from "../../lib/api/products";
 
 const HomePage: React.FC = () => {
   const { products, setProducts } = useProduct();
@@ -13,12 +14,10 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("/api/product");
-        if (!response.ok) throw new Error("Erro ao buscar produtos");
-        const data = await response.json();
+        const data = await getProducts();
         setProducts(data);
       } catch (error) {
-        console.error(error);
+        console.error("Erro ao buscar produtos:", error);
       }
     };
 
