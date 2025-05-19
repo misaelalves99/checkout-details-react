@@ -1,7 +1,7 @@
 // src/components/CurrencyConverter.tsx
 
 import React, { useState } from 'react';
-import styles from './CurrencyConverter.module.css'; // ✅ CSS Modules são compatíveis
+import styles from './CurrencyConverter.module.css';
 
 interface CurrencyConverterProps {
   amount: number;

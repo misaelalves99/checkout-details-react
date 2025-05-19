@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import CartButton from "./CartButton";
 import styles from './Navbar.module.css';
 
 const Navbar: React.FC = () => {
@@ -30,14 +29,6 @@ const Navbar: React.FC = () => {
             }
           >
             Produtos
-          </NavLink>
-          <NavLink
-            to="/cart"
-            className={({ isActive }) =>
-              `${styles.link} ${isActive ? styles.active : ''}`
-            }
-          >
-            <CartButton />
           </NavLink>
         </div>
       </div>

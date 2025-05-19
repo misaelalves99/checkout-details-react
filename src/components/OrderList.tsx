@@ -10,7 +10,6 @@ interface OrderListProps {
 }
 
 const OrderList: React.FC<OrderListProps> = ({ orders }) => {
-  // 09-Renderização Condicional - Verificação se há pedidos
   if (!orders || orders.length === 0) {
     return (
       <div className={styles.empty}>
@@ -21,7 +20,6 @@ const OrderList: React.FC<OrderListProps> = ({ orders }) => {
 
   return (
     <div className={styles.list}>
-      {/* 03-Arrays - Mapeamento dos pedidos para renderizar OrderCard */}
       {orders.map((order) => (
         <OrderCard key={order.id} order={order} />
       ))}

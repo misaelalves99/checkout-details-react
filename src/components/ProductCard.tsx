@@ -1,11 +1,8 @@
 // src/components/ProductCard.tsx
 
-import React, { useContext } from "react";
 import { FaCartPlus, FaHeart } from "react-icons/fa";
-import { useNavigate } from "react-router-dom"; // Corrigido aqui
-import { CartContext } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
 import { Product } from "../types/product";
-import { CartItem } from "../types/cart";
 import styles from "./ProductCard.module.css";
 
 interface ProductCardProps {
@@ -14,27 +11,10 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const cartContext = useContext(CartContext);
-  const navigate = useNavigate(); // useNavigate no lugar de useHistory
-
-  if (!cartContext) throw new Error("CartContext não encontrado");
-  const { addToCart } = cartContext;
-
-  const handleAddToCart = () => {
-    const cartItem: CartItem = {
-      id: product.id,
-      productId: product.id,
-      name: product.name,
-      price: product.price,
-      imageUrl: product.imageUrl,
-      quantity: 1,
-      product: product,
-    };
-    addToCart(cartItem);
-  };
+  const navigate = useNavigate();
 
   const goToProduct = () => {
-    navigate(`/products/${product.id}`); // use navigate para navegar
+    navigate(`/products/${product.id}`);
   };
 
   return (
@@ -71,7 +51,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className={styles.buttonGroup}>
           <button
             className={styles.cartButton}
-            onClick={handleAddToCart}
             title="Adicionar ao carrinho"
           >
             <FaCartPlus size={20} />

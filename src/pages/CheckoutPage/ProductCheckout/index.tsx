@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Product } from '../../../types/product';
-import { getProductById } from '../../../lib/api/products'; // ✅ API real
+import { getProductById } from '../../../lib/api/products';
 import styles from './CheckoutPage.module.css';
 
 interface ShippingOption {

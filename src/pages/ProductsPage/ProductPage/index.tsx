@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useCart } from '../../../context/CartContext';
 import styles from './ProductPage.module.css';
 import { Product } from '../../../types/product';
 import { getProductById } from '../../../lib/api/products';
@@ -10,7 +9,6 @@ import ProductDetails from '../../../components/ProductDetails';
 
 const ProductPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { addToCart } = useCart();
   const navigate = useNavigate();
   const [product, setProduct] = useState<Product | null>(null);
   const [mainImage, setMainImage] = useState('');
@@ -36,7 +34,7 @@ const ProductPage: React.FC = () => {
       }
 
       try {
-        const fetchedProduct = await getProductById(numericId); // <- passe como número
+        const fetchedProduct = await getProductById(numericId);
         if (!fetchedProduct) throw new Error('Produto não encontrado');
         setProduct(fetchedProduct);
         setMainImage(fetchedProduct.imageUrl || '');
@@ -51,22 +49,7 @@ const ProductPage: React.FC = () => {
     loadProduct();
   }, [id]);
 
-
-  const handleAddToCart = () => {
-    if (!product) return;
-    addToCart({
-      id: String(product.id),
-      productId: product.id,
-      name: product.name,
-      price: product.price,
-      imageUrl: product.imageUrl,
-      quantity: 1,
-      product,
-    });
-  };
-
   const handleBuyNow = () => {
-    handleAddToCart();
     navigate(`/checkout/${product?.id}`);
   };
 

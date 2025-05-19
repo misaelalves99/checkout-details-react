@@ -18,7 +18,3 @@ export class ProductFilter {
     });
   }
 }
-
-// 03-Arrays -
-// 04-Objetos -
-// 09-Renderização Condicional -

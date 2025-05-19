@@ -1,7 +1,6 @@
 // src/app/components/CheckoutForm.tsx
 
 import React, { useState } from "react";
-import { useCart } from "../context/CartContext";
 import { CheckoutData } from "../types/checkout";
 import styles from "./CheckoutForm.module.css";
 
@@ -10,8 +9,6 @@ interface CheckoutFormProps {
 }
 
 const CheckoutForm: React.FC<CheckoutFormProps> = ({ onSubmit }) => {
-  const { cartItems } = useCart();
-
   const [formData, setFormData] = useState<CheckoutData>({
     fullName: "",
     email: "",
@@ -33,7 +30,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ onSubmit }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Dados do pedido:", formData, cartItems);
+    console.log("Dados do pedido:", formData);
     onSubmit(formData);
   };
 

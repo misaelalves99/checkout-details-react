@@ -1,10 +1,10 @@
 // src/components/Footer.tsx
 
 import React from 'react';
-import styles from './Footer.module.css'; // CSS Module para estilização
+import styles from './Footer.module.css';
 
 const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear(); // Obtém o ano atual dinamicamente
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className={styles.footer}>

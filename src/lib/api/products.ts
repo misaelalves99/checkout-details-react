@@ -2,7 +2,6 @@
 
 import { Product } from '../../types/product';
 
-// Base simulada de produtos
 const products: Product[] = [
   {
     id: 1,
@@ -76,13 +75,9 @@ const products: Product[] = [
   },
 ];
 
-/** Retorna a lista completa de produtos (mock) */
 export async function getProducts(): Promise<Product[]> {
   return products;
 }
-
-/** Retorna um produto pelo seu ID
-* @param id ID numérico ou string */
 
 export async function getProductById(id: number | string): Promise<Product | null> {
   const numericId = Number(id);

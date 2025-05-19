@@ -41,7 +41,6 @@ const HomePage: React.FC = () => {
 
       <section className={styles.featuredSection}>
         <h2 className={styles.sectionTitle}>Produtos em Destaque</h2>
-        {/* Passa só os 6 primeiros produtos */}
         <ProductList products={products.slice(0, 6)} />
       </section>
     </main>
